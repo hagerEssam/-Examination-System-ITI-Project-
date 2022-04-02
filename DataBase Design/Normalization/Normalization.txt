@@ -1,0 +1,34 @@
+DATA Schema{
+- kid_login((kid_id (fk),kid_email(fk))pk ,kid_password)-------->finished
+- inst_login((inst_id(fk),inst_email(fk))pk ,inst_password)------>finished
+
+- Kid(kid_id (pk) ,kid_fname,kid_lname ,kid_age,kid_gender,kid_address,kid_phone,level ,dept_id (fk))
+
+- Department(dept_id (pk) ,dept_name,dept_desc,Manger_id) 
+- Instructor(inst_id (pk),inst_name,inst_degree,inst_address,inst_salary,dept_id (fk))
+- Topic(top_id (pk),top_name)
+}
+
+
+COURSE Schema{
+- Course(crs_id(pk),crs_name,crs_material"link",crs_duration,crs_top_id)
+- Kid_Course((crs_id(fk),kid_id(fk))pk)
+- Instractor_Course((crs_id(fk),ins_id(fk))pk , evaluation)
+
+}
+
+ 
+EXAM Schema{
+- Exam(exam_id(pk) ,exam_model,exam_date,crs_id,instractor_id ,Grade)
+
+- Exam_kid_Answers((kid_id(fk),exam_id(fk))pk,question_id ,Kid_Answers , point , date)
+- Exam_Questions((Exam_id fk ,Ques_id fk)pk)
+}
+
+Models Schema{
+
+-Questions(question_id (pk) ,question ,question_type ,question_Answers,exam_id(fk))
+-QUESTIONS_IQ (question_id (pk),question ,question_type ,question_model_Answers,exam_id,exam_id(fk))
+-model_choice_IQ(question_id,choice ,question_model_Answers)
+
+}
